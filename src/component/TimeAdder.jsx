@@ -6,8 +6,8 @@ function TimeAdder() {
   const [totalMinutes, setTotalMinutes] = useState(0);
 
   const addTime = () => {
-    const hh = parseInt(hour, 10);
-    const mm = parseInt(minute, 10);
+    const hh = parseInt(hour || 0, 10);
+    const mm = parseInt(minute || 0, 10);
     const newTotalMinutes = totalMinutes + hh * 60 + mm;
     setTotalMinutes(newTotalMinutes);
     setHour(0);
@@ -19,7 +19,6 @@ function TimeAdder() {
     setHour(0);
     setMinute(0);
   };
-
   function convertMinutesToHoursAndMinutes(minutes) {
     if (minutes < 60) {
       return `${minutes} minute${minutes !== 1 ? "s" : ""}`;
@@ -36,6 +35,11 @@ function TimeAdder() {
     }
   }
   const shouldAnimate = totalMinutes > 540;
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addTime();
+    }
+  };
   return (
     <div className="container">
       <input
@@ -49,6 +53,7 @@ function TimeAdder() {
         placeholder="Enter minute..."
         value={minute || ""}
         onChange={(e) => setMinute(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <div className="btn-container">
         <button className="reset" onClick={() => resetTime()}>
