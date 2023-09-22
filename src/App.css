@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 .main-wrapper {
@@ -59,7 +59,27 @@ button {
   color: #28a745;
   animation: bounce 0.5s ease-in-out infinite;
 }
-
+p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+@media screen and (max-width: 480px) {
+  .container {
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 30%;
+  }
+  input {
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  p {
+    font-size:18px;
+    font-weight: bold;
+    margin-top: 16px;
+  }
+}
 @keyframes bounce {
   0%,
   100% {
@@ -68,10 +88,4 @@ button {
   50% {
     transform: translateY(-10px);
   }
-}
-
-p {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
 }
